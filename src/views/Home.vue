@@ -4,36 +4,24 @@
     <div class="home-content hero-body">
       <div class="container is-fluid">
         <form class="link-form columns">
-          <div class="field column ">
-            <label class="label is-large has-text-light">Title</label>
-            <div class="control">
-              <input
-                class="input is-large"
-                type="text"
-                placeholder="Ex: My first attempt"
-              />
-            </div>
-          </div>
-          <div class="field column ">
-            <label class="label is-large has-text-light">Links</label>
-            <div class="control">
-              <input
-                class="input is-large"
-                type="text"
-                placeholder="http://youtube.com/text"
-              />
-            </div>
-          </div>
-          <div class="field column ">
-            <label class="label is-large has-text-light">Domain</label>
-            <div class="control">
-              <input
-                class="input is-large"
-                type="text"
-                placeholder="http://youtube.com/text"
-              />
-            </div>
-          </div>
+          <InputText
+            v-model:value.sync="form.title"
+            label="Title"
+            placeholder="Ex: My first attempt"
+            class="column"
+          />
+          <InputText
+            v-model:value.sync="form.link"
+            label="Link"
+            class="column"
+            placeholder="http://youtube.com/text"
+          />
+          <InputText
+            v-model:value.sync="form.domain"
+            label="Domain"
+            class="column"
+            placeholder="Youtube"
+          />
           <div class="actions buttons column is-narrow">
             <button class="button is-primary is-large">
               <span class="icon is-small">
@@ -78,33 +66,18 @@
 </template>
 
 <script>
+import InputText from "../components/foundation/input-text/InputText";
 export default {
   name: "Home",
-  components: {},
+  components: { InputText },
   data() {
     return {
-      links: [
-        { title: "", link: "", domain: "" },
-        { title: "", link: "", domain: "" },
-        { title: "", link: "", domain: "" },
-        { title: "", link: "", domain: "" },
-        { title: "", link: "", domain: "" },
-        { title: "", link: "", domain: "" },
-        { title: "", link: "", domain: "" },
-        { title: "", link: "", domain: "" },
-        { title: "", link: "", domain: "" },
-        { title: "", link: "", domain: "" },
-        { title: "", link: "", domain: "" },
-        { title: "", link: "", domain: "" },
-        { title: "", link: "", domain: "" },
-        { title: "", link: "", domain: "" },
-        { title: "", link: "", domain: "" },
-        { title: "", link: "", domain: "" },
-        { title: "", link: "", domain: "" },
-        { title: "", link: "", domain: "" },
-        { title: "", link: "", domain: "" },
-        { title: "", link: "", domain: "" },
-      ],
+      form: {
+        title: "BALBI",
+        link: "",
+        domain: "",
+      },
+      links: [{ title: "", link: "", domain: "" }],
     };
   },
 };
@@ -113,10 +86,6 @@ export default {
 .main-title {
   text-align: center;
   font-weight: 200;
-}
-
-.home-content {
-  display: flex;
-  flex-direction: column;
+  cursor: pointer;
 }
 </style>
