@@ -1,0 +1,52 @@
+$title-color: white;
+$title-family: true;
+@import "bulma/sass/utilities/_all";
+@import "bulma/sass/base/_all";
+@import "bulma/sass/elements/_all";
+@import "bulma/sass/form/_all";
+@import "bulma/sass/components/_all";
+@import "bulma/sass/grid/_all";
+@import "bulma/sass/helpers/_all";
+@import "bulma/sass/layout/_all";
+
+@font-face {
+  font-family: 'Roboto';
+  src:  url('../assets//fonts/RobotoCondensed-Regular.ttf') format('ttf'),
+        url('../assets//fonts/RobotoCondensed-Bold.ttf') format('ttf');
+}
+
+body {
+  font-size: 1.2rem;
+  font-family: 'Roboto';
+  height: 100%;
+  min-height: 100vh;
+  background-color: $dark;
+  color: white;
+}
+
+
+
+// classes
+.link-form {
+  padding: 0.5rem;
+  background-color: $grey-dark;
+  .actions {
+    display: flex;
+    align-items: center;
+    padding-top: 2.6rem;
+  }
+}
+
+.links-list {
+  margin-top: 2rem;
+  padding: 2rem;
+  background-color: $grey-dark;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.link-card {
+  max-width: 22%;
+  margin-top: 2%;
+}
