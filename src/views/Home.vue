@@ -38,27 +38,7 @@
       </div>
       <div class="container is-fluid">
         <div class="links-list columns">
-          <div v-for="link in links" :key="link" class="card link-card">
-            <header class="card-header">
-              <p class="card-header-title">
-                Component
-              </p>
-            </header>
-            <div class="card-content">
-              <div class="content">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Phasellus nec iaculis mauris.
-                <a href="#">@bulmaio</a>. <a href="#">#css</a>
-                <a href="#">#responsive</a>
-                <br />
-                <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-              </div>
-            </div>
-            <footer class="card-footer">
-              <a href="#" class="card-footer-item">Access</a>
-              <a href="#" class="card-footer-item">Remove</a>
-            </footer>
-          </div>
+          <LinkCard v-for="link in links" :key="link" />
         </div>
       </div>
     </div>
@@ -67,9 +47,10 @@
 
 <script>
 import InputText from "../components/foundation/input-text/InputText";
+import LinkCard from "../components/foundation/link-card/LinkCard";
 export default {
   name: "Home",
-  components: { InputText },
+  components: { InputText, LinkCard },
   data() {
     return {
       form: {
@@ -77,7 +58,15 @@ export default {
         link: "",
         domain: "",
       },
-      links: [{ title: "", link: "", domain: "" }],
+      links: [
+        { title: "", link: "", domain: "" },
+        { title: "", link: "", domain: "" },
+        { title: "", link: "", domain: "" },
+        { title: "", link: "", domain: "" },
+        { title: "", link: "", domain: "" },
+        { title: "", link: "", domain: "" },
+        { title: "", link: "", domain: "" },
+      ],
     };
   },
 };

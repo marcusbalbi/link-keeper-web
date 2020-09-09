@@ -1,0 +1,40 @@
+.link-card {
+  max-width: 20%;
+  margin-top: 2%;
+  margin-right: 2%;
+
+  .card-header-title {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1rem;
+    background-color: $grey-light;
+
+    .remove {
+      height: 100%;
+      border-radius: 0;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
+
+  .card-content {
+    background-color: $grey-lighter;
+  }
+
+  .card-footer {
+    background-color: $grey-light;
+    border-top: none;
+    .card-footer-item {
+      border-top: none;
+    }
+  }
+}
+
+@media only screen and (max-width: $desktop) {
+  .link-card {
+    max-width: 100%;
+    margin-right: 0;
+  }
+}
