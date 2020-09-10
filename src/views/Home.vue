@@ -3,7 +3,7 @@
     <h1 class="hero-title main-title title is-1 mb-1">Link Keeper</h1>
     <div class="home-content hero-body">
       <div class="container is-fluid">
-        <form class="link-form columns">
+        <form @submit.prevent="add" class="link-form columns">
           <InputText
             v-model:value.sync="form.title"
             label="Title"
@@ -77,6 +77,16 @@ export default {
     };
   },
   methods: {
+    add() {
+      request
+        .post("/bookmarks/", this.form)
+        .then((result) => {
+          this.links = Array.from(result.data.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
     remove(link) {
       request
         .delete("/bookmarks/".concat(link._id))
