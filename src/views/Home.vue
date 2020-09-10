@@ -38,7 +38,12 @@
       </div>
       <div class="container is-fluid">
         <div class="links-list columns">
-          <LinkCard v-for="link in links" :key="link" />
+          <LinkCard
+            @remove="remove(link)"
+            :data="link"
+            v-for="link in links"
+            :key="link"
+          />
         </div>
       </div>
     </div>
@@ -48,6 +53,8 @@
 <script>
 import InputText from "../components/foundation/input-text/InputText";
 import LinkCard from "../components/foundation/link-card/LinkCard";
+import request from "../request/request";
+
 export default {
   name: "Home",
   components: { InputText, LinkCard },
@@ -59,7 +66,7 @@ export default {
         domain: "",
       },
       links: [
-        { title: "", link: "", domain: "" },
+        { id: "", title: "", link: "", domain: "" },
         { title: "", link: "", domain: "" },
         { title: "", link: "", domain: "" },
         { title: "", link: "", domain: "" },
@@ -68,6 +75,28 @@ export default {
         { title: "", link: "", domain: "" },
       ],
     };
+  },
+  methods: {
+    remove(link) {
+      request
+        .delete("/bookmarks/".concat(link._id))
+        .then((result) => {
+          this.links = Array.from(result.data.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+  },
+  mounted() {
+    request
+      .get("/bookmarks")
+      .then((result) => {
+        this.links = Array.from(result.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   },
 };
 </script>

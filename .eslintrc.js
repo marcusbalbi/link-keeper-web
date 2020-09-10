@@ -9,12 +9,13 @@ module.exports = {
   },
   rules: {
     "prettier/prettier": [
-        "warn",
-        {
-          "doubleQuote": true,
-          "semi": true,
-          "trailingComma": "all"
-        }
+      "warn",
+      {
+        doubleQuote: true,
+        semi: true,
+        trailingComma: "all",
+        arrowParens: "always",
+      },
     ],
     "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
     "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",

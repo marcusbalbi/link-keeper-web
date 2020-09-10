@@ -1,5 +1,6 @@
 .link-card {
   max-width: 20%;
+  min-width: 20%;
   margin-top: 2%;
   margin-right: 2%;
 
@@ -7,7 +8,7 @@
     position: relative;
     display: flex;
     justify-content: space-between;
-    font-size: 1rem;
+    font-size: 1.2rem;
     background-color: $grey-light;
 
     .remove {
@@ -21,6 +22,9 @@
 
   .card-content {
     background-color: $grey-lighter;
+    .domain {
+      font-weight: bold;
+    }
   }
 
   .card-footer {
@@ -34,6 +38,7 @@
 
 @media only screen and (max-width: $desktop) {
   .link-card {
+    min-width: 100%;
     max-width: 100%;
     margin-right: 0;
   }
