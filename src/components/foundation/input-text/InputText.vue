@@ -34,6 +34,11 @@ export default {
       content: this.value,
     };
   },
+  watch: {
+    value() {
+      this.content = this.value;
+    },
+  },
   methods: {
     change() {
       this.$emit("update:value", this.content);

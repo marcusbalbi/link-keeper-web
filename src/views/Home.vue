@@ -37,14 +37,12 @@
         </form>
       </div>
       <div class="container is-fluid">
-        <div class="links-list columns">
-          <LinkCard
-            @remove="remove(link)"
-            :data="link"
-            v-for="link in links"
-            :key="link"
-          />
-        </div>
+        <ul class="links-list columns">
+          <li v-for="link in links" :key="link">{{ link.title }}</li>
+        </ul>
+        <footer>
+          Pagination
+        </footer>
       </div>
     </div>
   </div>
@@ -52,16 +50,16 @@
 
 <script>
 import InputText from "../components/foundation/input-text/InputText";
-import LinkCard from "../components/foundation/link-card/LinkCard";
+// import LinkCard from "../components/foundation/link-card/LinkCard";
 import request from "../request/request";
 
 export default {
   name: "Home",
-  components: { InputText, LinkCard },
+  components: { InputText },
   data() {
     return {
       form: {
-        title: "BALBI",
+        title: "",
         link: "",
         domain: "",
       },
@@ -80,8 +78,9 @@ export default {
     add() {
       request
         .post("/bookmarks/", this.form)
-        .then((result) => {
-          this.links = Array.from(result.data.data);
+        .then(() => {
+          this.listAll();
+          this.cleanForm();
         })
         .catch((err) => {
           console.log(err);
@@ -90,6 +89,21 @@ export default {
     remove(link) {
       request
         .delete("/bookmarks/".concat(link._id))
+        .then(() => {
+          this.listAll();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    cleanForm() {
+      this.form.title = "";
+      this.form.link = "";
+      this.form.domain = "";
+    },
+    listAll() {
+      return request
+        .get("/bookmarks")
         .then((result) => {
           this.links = Array.from(result.data.data);
         })
@@ -99,14 +113,7 @@ export default {
     },
   },
   mounted() {
-    request
-      .get("/bookmarks")
-      .then((result) => {
-        this.links = Array.from(result.data.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    this.listAll();
   },
 };
 </script>

@@ -39,8 +39,11 @@ body {
   margin-top: 2rem;
   padding: 2rem;
   background-color: $grey-dark;
+  list-style: disc;
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
+  max-height: 40vh;
 }
 
 @import "../components/foundation/input-text/InputText.scss";
