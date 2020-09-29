@@ -28,7 +28,10 @@
                 <i class="fas fa-lg fa-plus"></i>
               </span>
             </button>
-            <button class="button is-danger is-large">
+            <button
+              class="button is-danger is-large"
+              @click.prevent="cleanForm"
+            >
               <span class="icon is-small">
                 <i class="fas fa-lg fa-broom"></i>
               </span>
